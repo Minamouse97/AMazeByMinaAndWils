@@ -41,22 +41,6 @@ public class AutoPlayActivity extends AppCompatActivity {
         app.setPanel(mp);
         controller = app.getController();
 
-//        String selDriver = app.getDriver();
-//        Log.v(TAG, "selDriver is equal to: " + selDriver);
-//        if (selDriver == "Wizard") {
-//            RobotDriver driver = new Wizard();
-//            controller.setDriver(driver);
-//        }
-//        else if (selDriver == "WallFollower" ){
-//            Log.v(TAG, "wallfollower made!!!!");
-//            RobotDriver driver = new WallFollower(controller);
-//            controller.setDriver(driver);
-//        }
-//        else if (selDriver == "Pledge") {
-//            RobotDriver driver = new Pledge();
-//            controller.setDriver(driver);
-//        }
-
         Log.v(TAG, "Initializing AutoPlayActivity");
 
 
@@ -73,22 +57,7 @@ public class AutoPlayActivity extends AppCompatActivity {
                         } catch (Exception e) {
                         Log.v(TAG, "Catch reached");
                         e.printStackTrace();
-//                        funMethod(null);
                     }
-//                    new Thread(new Runnable() {
-//                        public void run() {
-//                            DataHolder app = DataHolder.getInstance();
-//                            while (app.getMazeToggle()) {
-//                                if (app.getHasWon()) {
-//                                    Intent intent = new Intent(getApplicationContext(), WinActivity.class);
-//                                    startActivity(intent);
-//                                }
-//                                Log.v(TAG, "in loop");
-//                            }
-//
-//                        }
-//                    }).start();
-//                    Log.v(TAG, "secnd half reached");
                 } else {
                     app.setMazeToggle(false);
                 }
@@ -137,22 +106,12 @@ public class AutoPlayActivity extends AppCompatActivity {
         controller.setRobot(rob);
 
         DataHolder app = DataHolder.getInstance();
-//        controller.init();
         controller.switchToPlayingScreen();
         Log.v(TAG, "entering \"runDeliver\"");
-//        try {
-//            controller.runDeliver();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        driver.drive2
-//        controller.deliver(app.getConfig());
-//        controller.getBuilder().run();
     }
     public void funMethod (View view) {
         Intent intent = new Intent(getApplicationContext(), WinActivity.class);
         startActivity(intent);
-//        getContext.startActivity()
     }
 
 }
