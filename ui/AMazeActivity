@@ -1,0 +1,196 @@
+package edu.wm.cs.cs301.amazebyminaandwils.ui;
+
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.content.Intent;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.SeekBar;
+import android.widget.Spinner;
+import edu.wm.cs.cs301.amazebyminaandwils.R;
+
+/**
+ * This class is the main title page which all the other pages can go back to using the back button in app.
+ * Can go to GeneratingActivity and AlgorithmActivity.
+ */
+public class AMazeActivity extends AppCompatActivity {
+
+    private String selDriver;
+    private String selAlgorithm;
+    private int progressBarValue;
+    private static final String TAG = ":AMazeActivityLOG:";
+
+
+    /**
+     * Links the xml file activity_a_maze to this file
+     * @param savedInstanceState
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_a_maze);
+        Log.v(TAG, "Initializing AMazeActivity");
+
+
+
+        Spinner spnDriver = (Spinner)findViewById(R.id.spinner);
+
+        /**
+         * Sets an item listener on the spinner to keep track of what is selected
+         */
+        spnDriver.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             * Makes a toast message that tells the user what driver was selected
+             * @param parent
+             * @param view
+             * @param position
+             * @param id
+             */
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selDriver = parent.getSelectedItem().toString();
+                DataHolder app = DataHolder.getInstance();
+                app.setDriver(selDriver);
+                Log.v(TAG, "Driver selected and stored as selDriver");
+            }
+
+            /**
+             * If nothing is selected, nothing happens
+             * @param parent
+             */
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
+
+        Spinner spnAlgorithm = (Spinner)findViewById(R.id.spinner2);
+
+        /**
+         * Sets an item listener on the spinner to keep track of what is selected
+         */
+        spnAlgorithm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             * Makes a toast and log output that tests to make sure that the selection is being kept track of
+             * @param parent
+             * @param view
+             * @param position
+             * @param id
+             */
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.v(TAG, "Algorithm selected but not stored as anything yet");
+                selAlgorithm = parent.getSelectedItem().toString();
+                DataHolder app = DataHolder.getInstance();
+                app.setAlgorithm(selAlgorithm);
+
+
+            }
+
+            /**
+             * If nothing is selected, nothing happens
+             * @param parent
+             */
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
+
+        SeekBar mzSize = (SeekBar)findViewById(R.id.seekBar);
+         /*
+         Sets an item listener on the spinner to keep track of what is selected
+          */
+        mzSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+//            int progressChangedValue = 0;
+
+
+            /**
+             * Sets the progress in the seekbar to progressChangedValue
+             * @param seekBar
+             * @param progress
+             * @param fromUser
+             */
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+//                progressChangedValue = progress;
+                progressBarValue = progress;
+                DataHolder app = DataHolder.getInstance();
+                app.setBarValue(progressBarValue);
+
+            }
+
+            /**
+             * Once the user presses the mouse and starts dragging the seekbar, it starts tracking the touch
+             * @param seekBar
+             */
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            /**
+             * produces a message when a seekbar selection is made
+             * @param seekBar
+             */
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Log.v(TAG, "A maze size was selected");
+
+            }
+        });
+    }
+
+
+    /**
+     * Goes to GeneratingActivity
+     * @param view
+     */
+    public void pressRevisit(View view) {
+        Log.v(TAG, "Revisit was pressed, storing the driver data and switching to the generating screen");
+        Intent intent = new Intent(this, GeneratingActivity.class);
+//        intent.putExtra("data", selDriver);
+        DataHolder app = DataHolder.getInstance();
+//        app.setBarValue(progressBarValue);
+        app.setRevOrExp("Revisit");
+        startActivity(intent);
+    }
+
+
+    /**
+     * Goes to GeneratingActivity
+     * @param view
+     */
+    public void pressExplore(View view) {
+        Intent intent = new Intent(this, GeneratingActivity.class);
+        Log.v(TAG, "Explore was pressed, storing the driver data and switching to the GeneratingActivity");
+//        intent.putExtra("data", selDriver);
+        DataHolder app = DataHolder.getInstance();
+//        app.setBarValue(progressBarValue);
+        app.setRevOrExp("Explore");
+        startActivity(intent);
+
+    }
+
+
+    public void pressButton(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+
+    }
+
+//    public void pressButton(View view) {
+//        this.findViewById(android.R.id.content)
+////        Log.v(TAG, "Revisit was pressed, storing the driver data and switching to the generating screen");
+//        Intent intent = new Intent(this, SettingsActivity.class);
+//        startActivity(intent);
+//    }
+
+
+
+
+//    start.addActionListener(e-> {
+//        if(comb2.getSelectedIndex() != -1 && comb.getSelectedIndex() != -1) {
+//            int selectedDriver = comb.getSelectedIndex();
+//            String selectedAlgorithm = (String) comb2.getSelectedItem();
+
+
+
+}
