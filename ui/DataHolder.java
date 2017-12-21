@@ -1,18 +1,6 @@
 package edu.wm.cs.cs301.amazebyminaandwils.ui;
 
 
-//class DataHolder {
-//    private static final DataHolder ourInstance = new DataHolder();
-//
-//    static DataHolder getInstance() {
-//        return ourInstance;
-//    }
-//
-//    private DataHolder() {
-//    }
-//}
-
-
 import android.app.Application;
 import android.util.Log;
 
