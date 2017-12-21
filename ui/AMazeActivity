@@ -103,9 +103,7 @@ public class AMazeActivity extends AppCompatActivity {
          Sets an item listener on the spinner to keep track of what is selected
           */
         mzSize.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            int progressChangedValue = 0;
-
-
+        
             /**
              * Sets the progress in the seekbar to progressChangedValue
              * @param seekBar
@@ -113,7 +111,6 @@ public class AMazeActivity extends AppCompatActivity {
              * @param fromUser
              */
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                progressChangedValue = progress;
                 progressBarValue = progress;
                 DataHolder app = DataHolder.getInstance();
                 app.setBarValue(progressBarValue);
@@ -146,9 +143,7 @@ public class AMazeActivity extends AppCompatActivity {
     public void pressRevisit(View view) {
         Log.v(TAG, "Revisit was pressed, storing the driver data and switching to the generating screen");
         Intent intent = new Intent(this, GeneratingActivity.class);
-//        intent.putExtra("data", selDriver);
         DataHolder app = DataHolder.getInstance();
-//        app.setBarValue(progressBarValue);
         app.setRevOrExp("Revisit");
         startActivity(intent);
     }
@@ -161,9 +156,7 @@ public class AMazeActivity extends AppCompatActivity {
     public void pressExplore(View view) {
         Intent intent = new Intent(this, GeneratingActivity.class);
         Log.v(TAG, "Explore was pressed, storing the driver data and switching to the GeneratingActivity");
-//        intent.putExtra("data", selDriver);
         DataHolder app = DataHolder.getInstance();
-//        app.setBarValue(progressBarValue);
         app.setRevOrExp("Explore");
         startActivity(intent);
 
@@ -175,22 +168,5 @@ public class AMazeActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-
-//    public void pressButton(View view) {
-//        this.findViewById(android.R.id.content)
-////        Log.v(TAG, "Revisit was pressed, storing the driver data and switching to the generating screen");
-//        Intent intent = new Intent(this, SettingsActivity.class);
-//        startActivity(intent);
-//    }
-
-
-
-
-//    start.addActionListener(e-> {
-//        if(comb2.getSelectedIndex() != -1 && comb.getSelectedIndex() != -1) {
-//            int selectedDriver = comb.getSelectedIndex();
-//            String selectedAlgorithm = (String) comb2.getSelectedItem();
-
-
 
 }
