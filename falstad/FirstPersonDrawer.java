@@ -7,17 +7,9 @@ import android.util.Log;
 import edu.wm.cs.cs301.amazebyminaandwils.generation.BSPBranch;
 import edu.wm.cs.cs301.amazebyminaandwils.generation.BSPLeaf;
 import edu.wm.cs.cs301.amazebyminaandwils.generation.BSPNode;
-//import generation.CardinalDirection;
 import edu.wm.cs.cs301.amazebyminaandwils.generation.Cells;
-//import generation.MazeBuilder;
 import edu.wm.cs.cs301.amazebyminaandwils.generation.Seg;
-//import generation.Wall;
 
-//import java.awt.Color;
-//import java.awt.Graphics;
-//import java.awt.Graphics2D;
-//import java.awt.Point;
-//import java.awt.RenderingHints;
 import java.util.ArrayList;
 
 import edu.wm.cs.cs301.amazebyminaandwils.falstad.Constants.StateGUI;
@@ -141,7 +133,6 @@ public class FirstPersonDrawer extends DefaultViewer {
         // update graphics
         // draw background figure: black on bottom half, grey on top half
         drawBackground(mp);
-//		drawBackground(mp.getBufferGraphics());
         // set color to white and draw what ever can be seen from the current position
         mp.setColor(edu.wm.cs.cs301.amazebyminaandwils.falstad.MazePanel.ColorEnum.WHITE);
         rset.set(0, view_width-1); // reset set of ranges to set with single new element (0,width-1)
@@ -162,7 +153,6 @@ public class FirstPersonDrawer extends DefaultViewer {
      */
     private void drawBackground(MazePanel mp) {
         mp.setColor(edu.wm.cs.cs301.amazebyminaandwils.falstad.MazePanel.ColorEnum.BLACK);
-//        mp.setColorSpecial(-8711148);
 
         mp.fillRect(0, 0, view_width, view_height/2);
 
@@ -283,7 +273,6 @@ public class FirstPersonDrawer extends DefaultViewer {
         p[0] = x1;
         p[1] = x2;
         // constraint: x1 <= x2
-//		Point p = new Point(x1, x2);
         return (rset.intersect(p));
     }
 
@@ -364,10 +353,6 @@ public class FirstPersonDrawer extends DefaultViewer {
             return;
         int x1i = x1;
         int xd = x2-x1;
-//		gc.setColor(seg.getColor());
-//		mp.setColor(seg.getColor());
-
-//        mp.setColorUsingInt(seg.getColor());
         mp.setColorSpecial(seg.getColor());
         boolean drawn = false;
         drawrect_late_ct++; // debug, counter
@@ -376,15 +361,12 @@ public class FirstPersonDrawer extends DefaultViewer {
             // check if there is an intersection,
             // if there is none proceed exit the loop,
             // if there is one, get it as (x1i,x2i)
-//			Point p = new Point(x1i, x2);
             int p[];
             p = new int[2];
             p[0] = x1i;
             p[1] = x2;
             if (!rset.intersect(/*mp.point(x1i, x2)*/p))
                 break;
-//			x1i = p.x;
-//			int x2i = p.y;
             x1i = p[0];
             int x2i = p[1];
             // let's work on the intersection (x1i,x2i)
