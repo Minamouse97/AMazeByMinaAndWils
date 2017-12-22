@@ -59,7 +59,6 @@ public class PlayActivity extends AppCompatActivity {
         int  n = rand.nextInt(1) + 1;
         Log.v(TAG, "msui is: " + app.getMusicTheme());
         if (Objects.equals(app.getMusicTheme(), "Christmas")) {
-//        if (app.getMusicTheme() == "Christmas") {
             Log.v(TAG, "Christmas music playing");
             MediaPlayer player= MediaPlayer.create(PlayActivity.this,R.raw.silverbells);
             player.start();
@@ -69,9 +68,6 @@ public class PlayActivity extends AppCompatActivity {
             MediaPlayer player= MediaPlayer.create(PlayActivity.this,R.raw.monstermash);
             player.start();
         }
-//        else {
-////            player.pause();
-//        }
 
 
 
