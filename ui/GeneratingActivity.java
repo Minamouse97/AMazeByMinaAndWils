@@ -39,7 +39,6 @@ public class GeneratingActivity extends AppCompatActivity {
 
     private static final String TAG = "GenerateActivityLOG";
     private MazeController controller;
-//    private MazePanel mp;
 
 
     /**
@@ -52,14 +51,11 @@ public class GeneratingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generating);
-//        addListenerOnButton();
         Log.v(TAG, "Initializing GeneratingActivity");
-//        init(PlayActivity);
         init();
     }
 
 
-    //    private void init(Activity activity) {
     private void init() {
         Order.Builder itemPicked;
 
@@ -70,31 +66,20 @@ public class GeneratingActivity extends AppCompatActivity {
         switch (selAlgorithm) {
             case "DFS":
                 itemPicked = Order.Builder.DFS;
-//                System.out.println("itemPicked is DFS");
                 break;
             case "Eller":
                 itemPicked = Order.Builder.Eller;
-//                System.out.println("itemPicked is Eller");
                 break;
             case "Prim":
                 itemPicked = Order.Builder.Prim;
-//                System.out.println("itemPicked is Prim");
                 break;
             default:
                 itemPicked = Order.Builder.DFS;
-//                System.out.println("itemPicked is default");
                 break;
         }
 
-//        controller = app.getController();
-
-
-//        if (app.getRevOrExp() == "Explore") {
-//            controller = new MazeController(String filename)
-//        }
         controller = new MazeController(itemPicked);
 
-//        controller.setBuilder(itemPicked);
         Log.v(TAG, "selDriver is: " + selDriver);
 
         if (Objects.equals(selDriver, "Wizard")) {
@@ -102,7 +87,6 @@ public class GeneratingActivity extends AppCompatActivity {
             Log.v(TAG, "DRIVER IS: " + driver);
             controller.setDriver(driver);
             Log.v(TAG, "driver is being set to controller");
-//            app.setDriver(driver);
             app.setRobDriver(driver);
         } else if (Objects.equals(selDriver, "WallFollower")) {
             RobotDriver driver = new WallFollower(controller);
@@ -115,15 +99,12 @@ public class GeneratingActivity extends AppCompatActivity {
             Log.v(TAG, "DRIVER IS: " + driver);
             controller.setDriver(driver);
             Log.v(TAG, "driver is being set to controller");
-//            app.setDriver(driver);
             app.setRobDriver(driver);
         } else {
         }
 
-//        controller.picked = app.getDriver();
 
         controller.setSkillLevel(app.getBarValue());
-//        controller.setState(GeneratingActivity(this));
 
         controller.init();
         Log.v(TAG, "controller.switchToGeneratingScreen is being reached!!!");
@@ -131,43 +112,8 @@ public class GeneratingActivity extends AppCompatActivity {
         app.setController(controller);
 
         method();
-//        trackGeneration();
 
     }
-//        factory = new MazeFactory();
-//        factory.order(controller);
-//        factory.waitTillDelivered
-
-
-//        app.setBuilder(itemPicked);
-//        buildMaze();
-
-
-//    private void trackGeneration() {
-//ProgressBar prog = (ProgressBar) findViewById(R.id.progressBar15);
-//        new Thread(new Runnable() {
-//            public void run() {
-//                DataHolder app = DataHolder.getInstance();
-//                while (!app.getDone()) {
-//
-//                    prog.setProgress(app.getPartiters());
-////                    Log.v(TAG, "Partiters is: " + app.getPartiters());
-//                    try {
-//                        TimeUnit.MILLISECONDS.sleep(400);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//                try {
-//                    TimeUnit.MILLISECONDS.sleep(800);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//                pressProceed(null);
-//
-//            }
-//        }).start();
-//    }
 
 
     public void method() {
@@ -255,82 +201,6 @@ public class GeneratingActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * Adds a button that when pressed has a progress bar pop up, which goes to AutoPlayActivity screen
-     * when it gets to 100%.
-     */
-//    public void addListenerOnButton() {
-//        btnStartProgress = (Button) findViewById(R.id.btnStartProgress);
-//        btnStartProgress.setOnClickListener(
-//                new OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(View v) {
-//
-//
-//                        // prepare for a progress bar dialog
-//                        progressBar = new ProgressDialog(v.getContext());
-//                        progressBar.setCancelable(true);
-//                        progressBar.setMessage("File downloading ...");
-//                        progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-//                        progressBar.setProgress(0);
-//                        progressBar.setMax(100);
-//                        Log.v(TAG, "Generation button pressed, generating maze");
-//                        progressBar.show();
-//
-//                        //reset progress bar status
-//                        progressBarStatus = 0;
-//
-//                        //reset filesize
-//                        fileSize = 0;
-//
-//                        new Thread(new Runnable() {
-//                            public void run() {
-//                                while (progressBarStatus < 100) {
-//
-//                                    // process some tasks
-//                                    progressBarStatus = doSomeTasks();
-//
-//                                    // your computer is too fast, sleep 1 second
-//                                    try {
-//                                        Thread.sleep(1000);
-//                                    } catch (InterruptedException e) {
-//                                        e.printStackTrace();
-//                                    }
-//
-//                                    // Update the progress bar
-//                                    progressBarHandler.post(new Runnable() {
-//                                        public void run() {
-//                                            progressBar.setProgress(progressBarStatus);
-//                                        }
-//                                    });
-//                                }
-//
-//                                // ok, file is downloaded,
-//                                if (progressBarStatus >= 100) {
-//
-//                                    // sleep 2 seconds, so that you can see the 100%
-//                                    try {
-//                                        Thread.sleep(2000);
-//                                    } catch (InterruptedException e) {
-//                                        e.printStackTrace();
-//                                    }
-//
-//                                    // close the progress bar dialog
-//                                    progressBar.dismiss();
-//                                    pressProceed(null);
-//                                }
-//
-//                            }
-//
-//                        }).start();
-//
-//                    }
-//
-//
-//                });
-//
-//    }
 
     /**
      * simulates a file being downloaded, but nothing is really being downloaded...
