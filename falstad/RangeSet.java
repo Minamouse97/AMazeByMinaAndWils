@@ -99,10 +99,6 @@ public class RangeSet {
     public boolean intersect( /*Point p*/int p[]) {
         // "p" isn't (strictly speaking) a point, but I need to return two
         // values here, and can't find a nicer way to do it.
-//		int p[];
-//		p = new int[2];
-//		int min = p.x;
-//		int max = p.y;
         int min = p[0];
         int max = p[1];
         // assume that set is sorted in increasing order
@@ -115,10 +111,8 @@ public class RangeSet {
                 return false;
             // at this point: min < rse.max and rse.min < max
             if (rse.min > min) // current interval overlaps
-//				p.x = rse.min;
                 p[0] = rse.min;
             if (rse.max < max) // current interval is contained
-//				p.y = rse.max;
                 p[1] = rse.max;
             return true;
         }
